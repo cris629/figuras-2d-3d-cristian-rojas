@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>figuras 2d y 3d</title>
+  
+    <link rel="stylesheet" href="/style.css">
+    
+  </head>  
+  <body>
+    <h1>cristian rojas figuras 2d y 3d</h1>
+    
+    
+<section id="inicio"></section>
+<section id="juego">
+<script type="module">
+       import * as THREE from "https://threejsfundamentals.org/threejs/resources/threejs/r119/build/three.module.js";
+        var renderer;
+        var scene;
+        var camera;
+  var collidableMeshList = [];
+        var collidableMeshList2 = [];
+        var collidableMeshList3 = [];
+    /*----*/
+  init();
+  
+        function init() {
+          // Creación escena
+
+          scene = new THREE.Scene();
+
+          // Crear camera
+
+          camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
+
+          renderer = new THREE.WebGLRenderer();
+          renderer.setClearColor(0x000000, 1.0);
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          renderer.setClearColor(0x000000, 1);
+
+          document.body.appendChild(renderer.domElement);
+
+          //Position camera
+
+          camera.position.x =0;
+          camera.position.y = -4.5;
+          camera.position.z = -1.8;
+          camera.lookAt(scene.position);
+
+          
+//cubo
+
+         var geometry5 = new THREE.BoxGeometry(0.5, 0.5, 1);
+           var material5 = new THREE.MeshNormalMaterial();
+          
+          var cube5 = new THREE.Mesh(geometry5, material5);
+          cube5.name = "cube4";
+           
+          scene.add(cube5);
+        cube5.translateX(1).translateY(1);
+        
+          //////////////////
+          
+ //plano
+            var geometry2 = new THREE.PlaneGeometry(1, 2);
+         var material2 = new THREE.MeshNormalMaterial({ wireframe: true });
+          
+            
+          
+          var cube2 = new THREE.Mesh(geometry2, material2);
+          cube2.name = "cube2";
+          scene.add(cube2);
+
+          cube2.translateX(0).translateY(0);
+          
+          render();
+          
+        }
+     function render() {
+          renderer.render(scene, camera);
+
+      
+      
+
+          
+
+          requestAnimationFrame(render);
+        }
+  </script>
+    </section>
+  </body>
+</html>
